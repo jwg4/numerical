@@ -3,6 +3,20 @@ from math import gcd, factorial
 from polynomial import Polynomial as P
 
 
+# GENERAL MATH
+def choose(p, j):
+    """
+        >>> choose(1, 1)
+        1
+        >>> choose(1, 2)
+        2
+        >>> choose(1, 3)
+        3
+    """
+    return factorial(j) // (factorial(p) * factorial(j - p))
+
+
+# PICKARD - HELPERS
 def L(n):
     """
         This is A003418(n+1).
@@ -21,14 +35,34 @@ def L(n):
 
 def L_factorial(n):
     """
+        L(n)n! is the denominator that is multiplied out
+        in several places.
+        For example, Alef(n) = L(n)n!beta(n)
+        and delta(p, J) = L(n)n!alpha(p, J)
         >>> L_factorial(6)
         302400
     """
     return L(n) * factorial(n)
 
 
+def A(n, m):
+    """
+        We use this to change between fractions
+        that have been multiplied out by different denominators.
+        This means that we can do all the calculations with integers.
+        >>> A(1, 3)
+        36
+        >>> A(2, 3)
+        6
+    """
+    return L_factorial(m) // L_factorial(n)
+
+
 def gamma(p, j):
     """
+        Pickard doesn't define this symbol anywhere.
+        It is used in (13a) and (14a).
+        Its meaning is made clear in (12).
         >>> gamma(1, 1)
         -1
         >>> gamma(1, 3)
@@ -39,21 +73,9 @@ def gamma(p, j):
     return (-1)**p * choose(p, j)
 
 
-def choose(p, j):
-    """
-        >>> choose(1, 1)
-        1
-        >>> choose(1, 2)
-        2
-        >>> choose(1, 3)
-        3
-    """
-    return factorial(j) // (factorial(p) * factorial(j - p))
-
-
+# PICKARD - TABULATED SYMBOLS
 def Alef(n):
     """
-        This is A002405.
         >>> Alef(1)
         1
         >>> Alef(2)
@@ -74,7 +96,6 @@ def Alef(n):
 
 def Alef_star(n):
     """
-        This is A002405.
         >>> Alef_star(0)
         1
         >>> Alef_star(6)
@@ -89,16 +110,6 @@ def Alef_star(n):
         a = a * P(1, i)
     x = a.integral(-1, 0) * L(n)
     return round(x)
-
-
-def A(n, m):
-    """
-        >>> A(1, 3)
-        36
-        >>> A(2, 3)
-        6
-    """
-    return L_factorial(m) // L_factorial(n)
 
 
 def delta(p, J):
@@ -139,13 +150,66 @@ def delta_star(p, J):
     return sum(gamma(p, j) * A(j, J) * Alef_star(j) for j in range(p, J+1))
 
 
-def delta_sum(J):
-    return sum(delta(p, J) for p in range(0, J+1))
+# OEIS SEQUENCES
+def A002397(n):
+    """
+        >>> A002397(1)
+        2
+        >>> A002397(2)
+        12
+        >>> A002397(3)
+        72
+        >>> A002397(6)
+        302400
+        >>> A002397(9)
+        914457600
+    """
+    return L_factorial(n)
+
+
+def A002398(n):
+    """
+        >>> A002398(3)
+        165
+    """
+    return delta(0, n)
+
+
+def A002401(n):
+    """
+        >>> A002401(1)
+        1
+        >>> A002401(2)
+        5
+        >>> A002401(3)
+        27
+        >>> A002401(4)
+        502
+        >>> A002401(6)
+        95435
+        >>> A002401(9)
+        262426878
+    """
+    return Alef(n)
+
+
+def A002405(n):
+    """
+        >>> A002405(1)
+        -1
+        >>> A002405(2)
+        -1
+        >>> A002405(3)
+        -3
+        >>> A002405(6)
+        -4315
+        >>> A002405(9)
+        -7217406
+    """
+    return Alef_star(n)
 
 
 if __name__ == '__main__':
-    print("A002398")
-    print(", ".join(str(delta(0, J)) for J in range(0, 10)))
-    print(", ".join(str(delta_sum(J)) for J in range(0, 10)))
-    print(", ".join(str(L_factorial(J)) for J in range(0, 10)))
+    print("A002405")
+    print(", ".join(str(A002405(0, J)) for J in range(0, 10)))
 
