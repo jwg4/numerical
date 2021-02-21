@@ -16,6 +16,27 @@ def choose(p, j):
     return factorial(j) // (factorial(p) * factorial(j - p))
 
 
+def triangle_index(n):
+    """
+        >>> triangle_index(0)
+        (0, 0)
+        >>> triangle_index(1)
+        (0, 1)
+        >>> triangle_index(2)
+        (1, 1)
+        >>> triangle_index(6)
+        (0, 3)
+        >>> triangle_index(7)
+        (1, 3)
+    """
+    m = n
+    i = 0
+    while i < m:
+        m = m - i - 1
+        i = i + 1
+    return (m, i)
+
+
 # PICKARD - HELPERS
 def L(n):
     """
@@ -175,6 +196,22 @@ def A002398(n):
     return delta(0, n)
 
 
+def A002399(n):
+    """
+        >>> A002399(3)
+        -177
+    """
+    return delta(1, n)
+
+
+def A002400(n):
+    """
+        >>> A002400(3)
+        111
+    """
+    return delta(2, n)
+
+
 def A002401(n):
     """
         >>> A002401(1)
@@ -193,6 +230,40 @@ def A002401(n):
     return Alef(n)
 
 
+def A002402(n):
+    """
+        >>> A002402(3)
+        57
+        >>> A002402(6)
+        325560
+    """
+    return delta_star(1, n)
+
+
+def A002403(n):
+    """
+        >>> A002403(3)
+        -15
+        >>> A002403(7)
+        -4262895
+    """
+    return delta_star(2, n)
+
+
+def A002404(n):
+    """
+        >>> A002404(0)
+        3
+        >>> A002404(1)
+        -16
+        >>> A002404(3)
+        -2548
+        >>> A002404(4)
+        14385
+    """
+    return delta(n, n+1)
+
+
 def A002405(n):
     """
         >>> A002405(1)
@@ -207,6 +278,46 @@ def A002405(n):
         -7217406
     """
     return Alef_star(n)
+
+
+def A002406(n):
+    """
+        >>> A002406(0)
+        1
+        >>> A002406(1)
+        8
+        >>> A002406(3)
+        212
+        >>> A002406(4)
+        -865
+    """
+    return delta_star(n, n+1)
+
+
+def A260780(n):
+    """
+        >>> A260780(2)
+        -1
+        >>> A260780(3)
+        23
+        >>> A260780(7)
+        -177
+    """
+    x, y = triangle_index(n)
+    return delta(x, y)
+
+
+def A260781(n):
+    """
+        >>> A260781(2)
+        1
+        >>> A260781(3)
+        5
+        >>> A260781(7)
+        57
+    """
+    x, y = triangle_index(n)
+    return delta_star(x, y)
 
 
 if __name__ == '__main__':
