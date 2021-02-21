@@ -51,22 +51,6 @@ def choose(p, j):
     return factorial(j) // (factorial(p) * factorial(j - p))
 
 
-def A008949(p, j):
-    """
-        >>> A008949(5, 5)
-        1
-        >>> A008949(0, 4)
-        16
-        >>> A008949(3, 6)
-        42
-    """
-    if p == j:
-        return 1
-    if p == 0:
-        return 2**j
-    return A008949(p-1, j-1) + A008949(p, j-1)
-
-
 def Alef(n):
     """
         This is A002405.
