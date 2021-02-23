@@ -12,11 +12,13 @@
 \maketitle
 \abstract{The definition of some integer sequences and triangles in \cite{pickard}, and the relationship between these definitions, and some similar notions in other works on numerical integration, is a little unclear. We try to make the definitions precise and to provide a concordance with other notations.}
 
+The two methods of numerical solution of ODEs which these coefficients are used in is explained in \cite{pickard} as well as in \cite{collatz} and \cite{henrici}.
+Here, we are not concerned with explicating this method, but only with the correct calculation of the coefficients.
 \section{Pickard's paper}
 \subsection{$\aleph_j$ and $\aleph^{\star}_j$}
 The article \cite{pickard} provided the sequences A002397 to A002406. Most of these sequences are taken from the tables for $\delta_p(J)$ and $\delta^{\star}_p(J)$. These are defined for all $0 \leq J$ and $0 \leq p \leq J$.
 
-Pickard first defines (in (6a)):
+Pickard first defines (in equation (6a)):
 \begin{equation}\label{eqn:beta_integral}
  \beta_j = \frac{1}{j!}\int_0^1 (u + j - 1)^{[j]} du 
 \end{equation}
@@ -28,13 +30,14 @@ where $E_J$ is an error term, and $\Delta$ is a forward difference operator.
 
 The polynomial has integer coefficients and highest term $u^{j}$.
 Thus the integral between $0$ and $1$ is a sum of fractions with denominators $1, 2, \ldots (j+1)$.
-So it can be written as a fraction with denominator $L(j) = gcd(1, 2, \ldots, (j+1))$.
+So it can be written as a fraction with denominator $L(j) = \gcd(1, 2, \ldots, (j+1))$.
 Thus the denominator of $\beta_j$ divides $L(j)j!$, and Pickard defines an integer sequence
 \begin{equation}\label{eqn:aleph}
  \aleph_j = L(j)j!\beta_j 
 \end{equation}
 
 Thus the $\aleph_j$ can be worked out mechanically, either from the definite integral (\ref{eqn:beta_integral}), or using the Stirling numbers, which comes to the same thing, and the integer sequences $\aleph_j$ and $L(j)j!$ give the rational sequence $\beta_j$ as their ratio.
+There is some uncertainty, which we have not attempted in this work to resolve, about the `generalized Stirling numbers of the first kind'. The intended definition is clear from Pickard's usage. To avoid ambiguity, we used the integral definition \ref{eqn:beta_integral} only to work with $\beta_j$.
 
 An entirely analogous set of definitions give $\beta^{\star}_j$ and $\aleph^{\star}_j$:
 \[ \beta^{\star}_j = \frac{1}{j!}\int_{-1}^0 (u + j - 1)^{[j]} du \]
@@ -63,10 +66,10 @@ or equivalently,
 This allows terms of the form $\beta_j \Delta^{j}f_{-j}$ to be written $\sum_{p=0}^{j} \gamma_{p, j} \beta_{j} f_{-p}$.
 We then define 
 \[ \alpha_p(J) = \sum_{j=p}^{J} \gamma_{p, j} \beta{j} \]
-which allows us to further simplify the estimate for $y(x_1)$ given in Equation (4) as
+which, grouping the summation differently, allows us to further simplify the estimate for $y(x_1)$ given in Equation (4) as
 \[ y(x_1) = y(x_0) = h\sum_{p=0}^{J} \alpha_{p}(J)f_{-p} + E_{J} \]
 
-Like $\beta{j}$, $\alpha{j}$ are fractions with a denominator dividing $L(j)j!$.
+Like $\beta_{j}$, $\alpha_{p}(J)$ are fractions with a denominator dividing $L(j)j!$.
 As before, it is convenient to multiply out by this denominator to get integers, here $\delta_p(J) = L(J)J! \alpha_p(J)$.
 
 To relate $\delta_p(J)$ to $\aleph_j$, we have
@@ -74,7 +77,7 @@ To relate $\delta_p(J)$ to $\aleph_j$, we have
 and therefore
 \[ \delta_p(J) = \sum_{j=p}^{J} \frac{L(J)J!}{L(j)j!} \gamma_{p, j} \aleph_{j} \]
 where all the terms on the right hand side, including the fraction, are integers.
-This, together with the values of $\aleph_{j}$ given by (\ref{eqn:beta_integral} and \ref{eqn:aleph}, allow us to calculate arbitrary values of $\delta_p(J)$.
+This, together with the values of $\aleph_{j}$ given by (\ref{eqn:beta_integral}) and (\ref{eqn:aleph}), allow us to calculate arbitrary values of $\delta_p(J)$.
 
 An exactly analogous consideration exists for $\delta^{\star}_p(J)$.
 
@@ -86,20 +89,22 @@ Pickard cites both the books \cite{collatz} and \cite{henrici} as providing tabl
 The Collatz version is chapter 2, section 3 of \cite{collatz}, where he refers to the `Adams interpolation method' and the `Adams extrapolation method'. The Henrici version is chapter 5 of \cite{henrici}, where he refers to the methods as the Adams-Moulton and the Adams-Bashforth method.
 
 \begin{center}
-\begin{tabular}{|c|c|c|c|}
+\begin{tabular}{|c|c|c|}
 \hline
-Pickard \cite{pickard} & Also & Collatz \cite{collatz} & Henrici \cite{henrici} \\ 
+Pickard \cite{pickard} & Collatz \cite{collatz} & Henrici \cite{henrici} \\ 
 \hline
-$\beta_j$ & $\frac{\aleph_j}{L(j)j!}$ & $\beta_j$ & $\gamma_j$ \\
-$\alpha_p(J)$ & & $\alpha_{J, p}$ & $\beta_{J, p}$ \\
-$\beta^{\star}_j$ & $\frac{\aleph^{\star}_j}{L(j)j!}$ & $\beta_j^{\star}$ & $\gamma^{\star}_j$ \\
-$\alpha^{\star}_p(J)$ & & $\alpha^{\star}_{J, p}$ & $\beta^{\star}_{J, p}$ \\
+$\beta_j$ & $\beta_j$ & $\gamma_j$ \\
+$\alpha_p(J)$ & $\alpha_{J, p}$ & $\beta_{J, p}$ \\
+$\beta^{\star}_j$ & $\beta_j^{\star}$ & $\gamma^{\star}_j$ \\
+$\alpha^{\star}_p(J)$ & $\alpha^{\star}_{J, p}$ & $\beta^{\star}_{J, p}$ \\
 \hline
 \end{tabular}
 \end{center}
 
+Henrici gives a recursive formula for $\beta_n$ in terms of $\beta_i$ for $i$ betwen $0$ and $n-1$ on page 193. This potentially represents an easier way of obtaining terms of this sequence than (\ref{eqn:beta_integral}).
+
 \section{Further notes}
-The paper \cite{curtz}, which we have not been able to get hold of, certainly defines a similar collection of coefficients. The sequence \url{https://oeis.org/A140825} and the paper \cite{flajolet} do not give us all the information we need to be sure of the exact relationship to those of Pickard.
+The paper \cite{curtz}, which we have not been able to get hold of, certainly defines a similar collection of coefficients. The sequence \url{https://oeis.org/A140825} and the paper \cite{flajolet} do not give us all the information we need to be sure of the exact relationship between those coefficients and those of Pickard.
 
 
 \bibliography{numerical}
