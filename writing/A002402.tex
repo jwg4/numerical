@@ -1,0 +1,38 @@
+\documentclass{article}
+
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\title{Coefficients for numerical integration as defined by Pickard}
+\author{Jack Grahl}
+
+\begin{document}
+\maketitle
+
+\section{Pickard's paper}
+The article \cite{pickard} provided the sequences A002397 to A002406. Most of these sequences are taken from the tables for $\delta_p(J)$ and $\delta^{\star}_p(J)$. These are defined for all $0 \leq J$ and $0 \leq p \leq J$.
+
+Pickard first defines (in (6a)):
+\begin{equation}\label{eqn:beta_integral}
+ \beta_j = \frac{1}{j!}\int_0^1 (u + j - 1)^{[j]} du 
+\end{equation}
+where the integrand is the polynomial defined by:
+\[ (u - l)^{[j]} = (u - l)(u - l - 1)\cdots(u - l - j + 1) \]
+
+The polynomial has integer coefficients and highest term $u^{j}$.
+Thus the integral between $0$ and $1$ is a sum of fractions with denominators $1, 2, \ldots (j+1)$.
+So it can be written as a fraction with denominator $L(j) = gcd(1, 2, \ldots, (j+1))$.
+Thus the denominator of $\beta_j$ divides $L(j)j!$, and Pickard defines an integer sequence
+\[ \aleph_j = L(j)j!\beta_j \]
+
+Thus the $\aleph_j$ can be worked out mechanically, either from the definite integral (\ref{eqn:beta_integral}), or using the Sterling numbers, which comes to the same thing, and the integer sequences $\aleph_j$ and $L(j)j!$ give the rational sequence $\beta_j$ as their ratio.
+
+
+
+\bibliography{numerical}
+\bibliographystyle{plain}
+
+\end{document}
+
