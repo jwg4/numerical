@@ -2,6 +2,8 @@ from math import gcd, factorial
 
 from polynomial import Polynomial as P
 
+from oeis import more, bfile
+
 
 # GENERAL MATH
 def choose(p, j):
@@ -321,6 +323,8 @@ def A260781(n):
 
 
 if __name__ == '__main__':
-    print("A002405")
-    print(", ".join(str(A002405(0, J)) for J in range(0, 10)))
-
+    sequences = [ A002398 ]
+    for sequence in sequences:
+        print(sequence.__name__)
+        print(more(sequence))
+        bfile(sequence)
