@@ -1,3 +1,6 @@
+import os
+
+
 def more(sequence):
     i = 0
     s = ""
@@ -15,6 +18,7 @@ def more(sequence):
 def bfile(sequence, m=30):
     name = sequence.__name__.replace("A", "b")
     filename = "%s.txt" % (name, )
-    with open(filename, "w") as f:
+    filepath = os.path.join("output", filename)
+    with open(filepath, "w") as f:
         for i in range(0, m):
             f.write("%d %d\n" % (i, sequence(i))) 
