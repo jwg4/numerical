@@ -323,8 +323,8 @@ def A260781(n):
 
 
 if __name__ == '__main__':
-    sequences = [ A002398 ]
+    sequences = [ A002398, A002399, A002400, A002402, A002404, A002406 ]
     for sequence in sequences:
         print(sequence.__name__)
         print(more(sequence))
-        bfile(sequence)
+        bfile(sequence, 100)
