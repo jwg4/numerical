@@ -10,8 +10,10 @@
 
 \begin{document}
 \maketitle
+\abstract{The definition of some integer sequences and triangles in \cite{pickard}, and the relationship between these definitions, and some similar notions in other works on numerical integration, is a little unclear. We try to make the definitions precise and to provide a concordance with other notations.}
 
 \section{Pickard's paper}
+\subsection{$\aleph_j$ and $\aleph^{\star}_j$}
 The article \cite{pickard} provided the sequences A002397 to A002406. Most of these sequences are taken from the tables for $\delta_p(J)$ and $\delta^{\star}_p(J)$. These are defined for all $0 \leq J$ and $0 \leq p \leq J$.
 
 Pickard first defines (in (6a)):
@@ -20,15 +22,67 @@ Pickard first defines (in (6a)):
 \end{equation}
 where the integrand is the polynomial defined by:
 \[ (u - l)^{[j]} = (u - l)(u - l - 1)\cdots(u - l - j + 1) \]
+The goal is to use $\beta_j$ in the estimate:
+\[ y(x_1) = y(x_0) + h\sum_{j=0}^{J} \beta_j \Delta^{j}f_{-j} + E_{J} \]
+where $E_J$ is an error term, and $\Delta$ is a forward difference operator.
 
 The polynomial has integer coefficients and highest term $u^{j}$.
 Thus the integral between $0$ and $1$ is a sum of fractions with denominators $1, 2, \ldots (j+1)$.
 So it can be written as a fraction with denominator $L(j) = gcd(1, 2, \ldots, (j+1))$.
 Thus the denominator of $\beta_j$ divides $L(j)j!$, and Pickard defines an integer sequence
-\[ \aleph_j = L(j)j!\beta_j \]
+\begin{equation}\label{eqn:aleph}
+ \aleph_j = L(j)j!\beta_j 
+\end{equation}
 
-Thus the $\aleph_j$ can be worked out mechanically, either from the definite integral (\ref{eqn:beta_integral}), or using the Sterling numbers, which comes to the same thing, and the integer sequences $\aleph_j$ and $L(j)j!$ give the rational sequence $\beta_j$ as their ratio.
+Thus the $\aleph_j$ can be worked out mechanically, either from the definite integral (\ref{eqn:beta_integral}), or using the Stirling numbers, which comes to the same thing, and the integer sequences $\aleph_j$ and $L(j)j!$ give the rational sequence $\beta_j$ as their ratio.
 
+An entirely analogous set of definitions give $\beta^{\star}_j$ and $\aleph^{\star}_j$:
+\[ \beta^{\star}_j = \frac{1}{j!}\int_{-1}^0 (u + j - 1)^{[j]} du \]
+\[ \aleph^{\star}_j = L(j)j!\beta^{\star}_j \]
+\[ y(x_0) = y(x_1) + h\sum_{j=0}^{J} \beta^{\star}_j \Delta^{j}f_{-j} + E^{\star}_{J} \]
+
+Here the only difference between these equations and the corresponding ones is that the estimate now gives $y(x_0)$ in terms of $y(x_1)$ and not vice versa, and the change in the integration bounds from $(0, 1)$ to $(-1, 0)$.
+
+\subsection{$\delta_p(J)$ and $\delta^{\star}_p(J)$}
+In equation (12) of \cite{pickard}, the symbol $\gamma_{p,j}$ (written without a comma in the subscript by Pickard) is implicitly defined
+\[ \Delta^{j}f_{-j}  = \sum_{p=0}^{j} \gamma_{p,j}f_{-p} \]
+Thus powers of the difference operator are expanded in the tabular points of $f$.
+The coefficients of this expansion are the alternating binomial coefficients:
+
+\begin{center}
+\begin{tabular}{ccccccccc}
+&&&1&&-1&&&\\
+&&1&&-2&&1&&\\
+&1&&-3&&3&&-1&\\
+1&&-4&&6&&-4&&1\\
+\end{tabular}
+\end{center}
+or equivalently,
+\[ \gamma_{p, j} = (-1)^{p} {j \choose p} \]
+
+This allows terms of the form $\beta_j \Delta^{j}f_{-j}$ to be written $\sum_{p=0}^{j} \gamma_{p, j} \beta_{j} f_{-p}$.
+We then define 
+\[ \alpha_p(J) = \sum_{j=p}^{J} \gamma_{p, j} \beta{j} \]
+which allows us to further simplify the estimate for $y(x_1)$ given in Equation (4) as
+\[ y(x_1) = y(x_0) = h\sum_{p=0}^{J} \alpha_{p}(J)f_{-p} + E_{J} \]
+
+Like $\beta{j}$, $\alpha{j}$ are fractions with a denominator dividing $L(j)j!$.
+As before, it is convenient to multiply out by this denominator to get integers, here $\delta_p(J) = L(J)J! \alpha_p(J)$.
+
+To relate $\delta_p(J)$ to $\aleph_j$, we have
+\[ \delta_p(J) = L(J)J! \sum_{j=p}^{J} \gamma_{p, j} \beta_{j} \]
+and therefore
+\[ \delta_p(J) = \sum_{j=p}^{J} \frac{L(J)J!}{L(j)j!} \gamma_{p, j} \aleph_{j} \]
+where all the terms on the right hand side, including the fraction, are integers.
+This, together with the values of $\aleph_{j}$ given by (\ref{eqn:beta_integral} and \ref{eqn:aleph}, allow us to calculate arbitrary values of $\delta_p(J)$.
+
+An exactly analogous consideration exists for $\delta^{\star}_p(J)$.
+
+\section{Concordance}
+Pickard cites both the books \cite{collatz} and \cite{henrici} as providing tables of the coefficients $\beta_j$ and $\beta^{\star}_j$, albeit with fewer entries than his own.
+
+\section{Further notes}
+The paper \cite{curtz}, which we have not been able to get hold of, certainly defines a similar collection of coefficients. The sequence \url{https://oeis.org/A140825} and the paper \cite{flajolet} do not give us all the information we need to be sure of the exact relationship to those of Pickard.
 
 
 \bibliography{numerical}
