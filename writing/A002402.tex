@@ -83,6 +83,21 @@ The Python code at \url{https://github.com/jwg4/numerical/blob/main/A002402/A002
 \section{Concordance}
 Pickard cites both the books \cite{collatz} and \cite{henrici} as providing tables of the coefficients $\beta_j$ and $\beta^{\star}_j$, albeit with fewer entries than his own.
 
+The Collatz version is chapter 2, section 3 of \cite{collatz}, where he refers to the `Adams interpolation method' and the `Adams extrapolation method'. The Henrici version is chapter 5 of \cite{henrici}, where he refers to the methods as the Adams-Moulton and the Adams-Bashforth method.
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Pickard \cite{pickard} & Also & Collatz \cite{collatz} & Henrici \cite{henrici} \\ 
+\hline
+$\beta_j$ & $\frac{\aleph_j}{L(j)j!}$ & $\beta_j$ & $\gamma_j$ \\
+$\alpha_p(J)$ & & $\alpha_{J, p}$ & $\beta_{J, p}$ \\
+$\beta^{\star}_j$ & $\frac{\aleph^{\star}_j}{L(j)j!}$ & $\beta_j^{\star}$ & $\gamma^{\star}_j$ \\
+$\alpha^{\star}_p(J)$ & & $\alpha^{\star}_{J, p}$ & $\beta^{\star}_{J, p}$ \\
+\hline
+\end{tabular}
+\end{center}
+
 \section{Further notes}
 The paper \cite{curtz}, which we have not been able to get hold of, certainly defines a similar collection of coefficients. The sequence \url{https://oeis.org/A140825} and the paper \cite{flajolet} do not give us all the information we need to be sure of the exact relationship to those of Pickard.
 
