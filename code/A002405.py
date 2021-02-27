@@ -1,5 +1,8 @@
 from math import gcd, factorial
 
+# py-polynomial==0.6.0
+# Py-Polynomial by Alexander Ignatov
+# https://github.com/allexks/py-polynomial
 from polynomial import Polynomial as P
 
 from oeis import more, bfile
