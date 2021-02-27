@@ -20,5 +20,5 @@ def bfile(sequence, m=30):
     filename = "%s.txt" % (name, )
     filepath = os.path.join("output", filename)
     with open(filepath, "w") as f:
-        for i in range(0, m):
+        for i in range(0, m+1):
             f.write("%d %d\n" % (i, sequence(i))) 
