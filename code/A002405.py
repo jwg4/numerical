@@ -5,8 +5,6 @@ from math import gcd, factorial
 # https://github.com/allexks/py-polynomial
 from polynomial import Polynomial as P
 
-from oeis import more, bfile
-
 
 # GENERAL MATH
 def choose(p, j):
@@ -329,5 +327,4 @@ if __name__ == '__main__':
     sequences = [ A002398, A002399, A002400, A002402, A002404, A002406 ]
     for sequence in sequences:
         print(sequence.__name__)
-        print(more(sequence))
-        bfile(sequence, 100)
+        print([sequence(i) for i in range(0, 15)])
