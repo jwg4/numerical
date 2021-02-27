@@ -115,6 +115,8 @@ def Alef(n):
     for i in range(0, n):
         a = a * P(1, i)
 
+    # This is the integral between 0 and 1
+    # Preferable to calculate term-by-term using integers
     x = 0
     for b, d in a.terms:
         x = x + b * (L(n) // (d + 1)) 
@@ -136,6 +138,8 @@ def Alef_star(n):
     for i in range(0, n):
         a = a * P(1, i)
     
+    # This is the integral between 0 and 1
+    # Preferable to calculate term-by-term using integers
     x = 0
     for b, d in a.terms:
         x = x + b * (-1)**d * (L(n) // (d + 1)) 
