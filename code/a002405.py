@@ -114,8 +114,11 @@ def Alef(n):
     a = P(1)
     for i in range(0, n):
         a = a * P(1, i)
-    x = a.integral(0, 1) * L(n)
-    return round(x)
+
+    x = 0
+    for b, d in a.terms:
+        x = x + b * (L(n) // (d + 1)) 
+    return x
 
 
 def Alef_star(n):
@@ -132,8 +135,11 @@ def Alef_star(n):
     a = P(1)
     for i in range(0, n):
         a = a * P(1, i)
-    x = a.integral(-1, 0) * L(n)
-    return round(x)
+    
+    x = 0
+    for b, d in a.terms:
+        x = x + b * (-1)**d * (L(n) // (d + 1)) 
+    return x
 
 
 def delta(p, J):
@@ -279,6 +285,8 @@ def A002405(n):
     -4315
     >>> A002405(9)
     -7217406
+    >>> A002405(15)
+    -3606726811032345
     """
     return Alef_star(n)
 
