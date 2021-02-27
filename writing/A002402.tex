@@ -16,7 +16,7 @@ The two methods of numerical solution of ODEs which these coefficients are used 
 Here, we are not concerned with explicating this method, but only with the correct calculation of the coefficients.
 \section{Pickard's paper}
 \subsection{$\aleph_j$ and $\aleph^{\star}_j$}
-The article \cite{pickard} provided the sequences A002397 to A002406. Most of these sequences are taken from the tables for $\delta_p(J)$ and $\delta^{\star}_p(J)$. These are defined for all $0 \leq J$ and $0 \leq p \leq J$.
+The article \cite{pickard} provided the sequences A002397 to A002406 as well as A260780 and A260781. Most of these sequences are taken from the tables for $\delta_p(J)$ and $\delta^{\star}_p(J)$. These are defined for all $0 \leq J$ and $0 \leq p \leq J$.
 
 Pickard first defines (in equation (6a)):
 \begin{equation}\label{eqn:beta_integral}
@@ -37,7 +37,7 @@ Thus the denominator of $\beta_j$ divides $L(j)j!$, and Pickard defines an integ
 \end{equation}
 
 Thus the $\aleph_j$ can be worked out mechanically, either from the definite integral (\ref{eqn:beta_integral}), or using the Stirling numbers, which comes to the same thing, and thence the integer sequences $\aleph_j$ and $L(j)j!$ give the rational sequence $\beta_j$ as their ratio.
-There is some uncertainty, which we have not attempted in this work to resolve, about the `generalized Stirling numbers of the first kind'. The intended definition is clear from Pickard's usage. To avoid ambiguity, we used the integral definition \ref{eqn:beta_integral} only to work with $\beta_j$.
+There is some uncertainty, which we have not attempted in this work to resolve, about the `generalized Stirling numbers of the first kind'. The intended definition is clear from Pickard's usage. To avoid ambiguity, we used the integral definition (\ref{eqn:beta_integral}) only to work with $\beta_j$.
 
 An entirely analogous set of definitions give $\beta^{\star}_j$ and $\aleph^{\star}_j$:
 \[ \beta^{\star}_j = \frac{1}{j!}\int_{-1}^0 (u + j - 1)^{[j]} du \]
@@ -67,7 +67,7 @@ This allows terms of the form $\beta_j \Delta^{j}f_{-j}$ to be written $\sum_{p=
 We then define 
 \[ \alpha_p(J) = \sum_{j=p}^{J} \gamma_{p, j} \beta{j} \]
 which, grouping the summation differently, allows us to further simplify the estimate for $y(x_1)$ given in Equation (4) as
-\[ y(x_1) = y(x_0) = h\sum_{p=0}^{J} \alpha_{p}(J)f_{-p} + E_{J} \]
+\[ y(x_1) = y(x_0) + h\sum_{p=0}^{J} \alpha_{p}(J)f_{-p} + E_{J} \]
 
 Like $\beta_{j}$, $\alpha_{p}(J)$ are fractions with a denominator dividing $L(j)j!$.
 As before, it is convenient to multiply out by this denominator to get integers, here $\delta_p(J) = L(J)J! \alpha_p(J)$.
