@@ -17,8 +17,12 @@ def more(sequence):
 
 def bfile(sequence, m=30):
     name = sequence.__name__.replace("A", "b")
+    if hasattr(sequence, "start"):
+        start = sequence.start
+    else:
+        start = 0
     filename = "%s.txt" % (name, )
     filepath = os.path.join("output", filename)
     with open(filepath, "w") as f:
-        for i in range(0, m+1):
+        for i in range(start, m+1):
             f.write("%d %d\n" % (i, sequence(i))) 
