@@ -214,7 +214,7 @@ def A002399(n):
     >>> A002399(3)
     -177
     """
-    return delta(1, n)
+    return -delta(1, n)
 
 
 def A002400(n):
