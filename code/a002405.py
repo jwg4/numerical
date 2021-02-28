@@ -259,6 +259,9 @@ def A002402(n):
     return delta_star(1, n)
 
 
+A002402.start = 1
+
+
 def A002403(n):
     """
     >>> A002403(3)
@@ -267,6 +270,9 @@ def A002403(n):
     -4262895
     """
     return delta_star(2, n)
+
+
+A002403.start = 2
 
 
 def A002404(n):
