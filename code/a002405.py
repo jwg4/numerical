@@ -119,7 +119,7 @@ def Alef(n):
     # Preferable to calculate term-by-term using integers
     x = 0
     for b, d in a.terms:
-        x = x + b * (L(n) // (d + 1)) 
+        x = x + b * (L(n) // (d + 1))
     return x
 
 
@@ -137,12 +137,12 @@ def Alef_star(n):
     a = P(1)
     for i in range(0, n):
         a = a * P(1, i)
-    
+
     # This is the integral between 0 and 1
     # Preferable to calculate term-by-term using integers
     x = 0
     for b, d in a.terms:
-        x = x + b * (-1)**d * (L(n) // (d + 1)) 
+        x = x + b * (-1) ** d * (L(n) // (d + 1))
     return x
 
 
@@ -216,6 +216,7 @@ def A002399(n):
     """
     return -delta(1, n)
 
+
 A002399.start = 1
 
 
@@ -225,6 +226,7 @@ def A002400(n):
     111
     """
     return delta(2, n)
+
 
 A002400.start = 2
 
