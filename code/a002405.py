@@ -216,6 +216,8 @@ def A002399(n):
     """
     return -delta(1, n)
 
+A002399.start = 1
+
 
 def A002400(n):
     """
