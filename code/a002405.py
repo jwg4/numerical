@@ -226,6 +226,8 @@ def A002400(n):
     """
     return delta(2, n)
 
+A002400.start = 2
+
 
 def A002401(n):
     """
